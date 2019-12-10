@@ -130,3 +130,26 @@ func TestMultipleAdPricings(t *testing.T) {
 		t.Errorf("customer '%s' total price found: %.2f but expected: %.2f", customer, price, expectedPrice)
 	}
 }
+
+func TestExampleScenarios(t *testing.T) {
+	customer := Customer("default")
+	price := getPriceForItems(t, customer, []AdName{"classic", "standout", "premium"})
+	expectedPrice := 987.97
+	if price != expectedPrice {
+		t.Errorf("customer '%s' total price found: %.2f but expected: %.2f", customer, price, expectedPrice)
+	}
+
+	customer = Customer("SecondBite")
+	price = getPriceForItems(t, customer, []AdName{"classic", "classic", "classic", "premium"})
+	expectedPrice = 934.97
+	if price != expectedPrice {
+		t.Errorf("customer '%s' total price found: %.2f but expected: %.2f", customer, price, expectedPrice)
+	}
+
+	customer = Customer("Axil Coffee Roasters")
+	price = getPriceForItems(t, customer, []AdName{"standout", "standout", "standout", "premium"})
+	expectedPrice = 1294.96
+	if price != expectedPrice {
+		t.Errorf("customer '%s' total price found: %.2f but expected: %.2f", customer, price, expectedPrice)
+	}
+}
