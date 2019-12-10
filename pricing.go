@@ -1,5 +1,11 @@
 package main
 
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+)
+
 // AdName stored as a string
 type AdName string
 
@@ -22,4 +28,21 @@ type CustomerPricingRules struct {
 type PricingRules struct {
 	AdPrices map[AdName]float64
 	Deals    map[Customer]CustomerPricingRules
+}
+
+// PriceRules holds all known ad prices
+var PriceRules PricingRules
+
+// LoadPrices gather all known ad prices, including customer deals
+func loadPrices() (PricingRules, error) {
+	data, err := ioutil.ReadFile("./pricing_rules.json")
+	if err != nil {
+		fmt.Print(err)
+	} else {
+		err = json.Unmarshal(data, &PriceRules)
+		if err != nil {
+			fmt.Print(err)
+		}
+	}
+	return PriceRules, err
 }

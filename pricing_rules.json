@@ -1,0 +1,37 @@
+{
+    "AdPrices": {
+        "classic": 269.99,
+        "standout": 322.99,
+        "premium": 394.99
+    },
+    "Deals": {
+        "SecondBite": {
+            "DiscountPrices": {
+            },
+            "GroupPrices": {
+                "classic": {
+                    "GroupCount": 3,
+                    "Multiplier": 2
+                }
+            }
+        },
+        "Axil Coffee Roasters": {
+            "DiscountPrices": {
+                "standout": 299.99
+            },
+            "GroupPrices": {
+            }
+        },
+        "MYER": {
+            "DiscountPrices": {
+                "premium": 389.99
+            },
+            "GroupPrices": {
+                "classic": {
+                    "GroupCount": 5,
+                    "Multiplier": 4
+                }
+            }
+        }
+    }
+}
