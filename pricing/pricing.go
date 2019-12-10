@@ -24,8 +24,14 @@ type Rules struct {
 	Deals    map[Customer]CustomerPricingRules
 }
 
-// FetchRules get the current state of all pricing rules
-// for now, let's just load this from a JSON file
-func FetchRules() (Rules, error) {
-	return loadPricesFromJSON()
+// CustomerRules for a specific Customer only
+type CustomerRules struct {
+	CustomerName Customer
+	AdPrices     map[AdName]float64
+	Deals        CustomerPricingRules
+}
+
+// CustomerAdPricer knows how to calculate customer ad prices, including special deals
+type CustomerAdPricer interface {
+	PriceForItems(ads []AdName) float64
 }
