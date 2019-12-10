@@ -1,10 +1,10 @@
-package main
+package pricing
 
 import (
 	"testing"
 )
 
-var expectedPrices = PricingRules{
+var expectedPrices = Rules{
 	AdPrices: map[AdName]float64{
 		"classic":  float64(269.99),
 		"standout": float64(322.99),
@@ -41,7 +41,7 @@ var expectedPrices = PricingRules{
 }
 
 func TestLoadJSON(t *testing.T) {
-	loadedPrices, err := loadPrices()
+	loadedPrices, err := loadPricesFromJSON()
 	if err != nil {
 		t.Errorf("loading JSON returned error: %v", err)
 	}
